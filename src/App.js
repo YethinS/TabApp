@@ -4,10 +4,12 @@ import LabTabs from "./components/LabTabs";
 import { Container } from "@mui/system";
 
 function App() {
+  const tabItems = ['PROFILE','MESSAGES',  'SETTINGS' ]
+  const tabContents = ['Profile Content', 'Message Content', 'Settings Content']
   return (
     <div className="App">
       <Container>
-        <LabTabs />
+        <LabTabs tabItems={tabItems} tabContents={tabContents} />
       </Container>
     </div>
   );

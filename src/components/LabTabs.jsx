@@ -5,7 +5,7 @@ import TabContext from '@mui/lab/TabContext';
 import TabList from '@mui/lab/TabList';
 import TabPanel from '@mui/lab/TabPanel';
 
-export default function LabTabs() {
+export default function LabTabs({tabItems, tabContents}) {
   const [value, setValue] = React.useState('1');
 
   const handleChange = (event, newValue) => {
@@ -17,14 +17,22 @@ export default function LabTabs() {
       <TabContext value={value}>
         <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
           <TabList onChange={handleChange} aria-label="lab API tabs example">
-            <Tab label="Profile" value="1" />
-            <Tab label="Settings" value="2" />
-            <Tab label="Messages" value="3" />
+            {tabItems.map((item,index) => {
+              return (
+                <Tab label={item} value={index} />
+              )
+            })}
+            
+           
           </TabList>
         </Box>
-        <TabPanel value="1">Profile Content</TabPanel>
-        <TabPanel value="2">Settings Content</TabPanel>
-        <TabPanel value="3">Messages Content</TabPanel>
+        {tabContents.map((item,index) => {
+          return (
+            <TabPanel value={index}>{item}</TabPanel>
+          )
+        })}
+       
+      
       </TabContext>
     </Box>
   );
